@@ -4,10 +4,11 @@ import 'react-native-gesture-handler';
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import colors from './styles/colors';
 
 import Home from './pages/Home';
 import Cart from './pages/Cart';
-import Header from './components/Header';
+import ShoesHeader from './components/ShoesHeader';
 
 const Stack = createStackNavigator();
 
@@ -15,14 +16,12 @@ function Routes() {
     return (
         <NavigationContainer>
             <Stack.Navigator
-                screenOptions={{ headerTitle: props => <Header {...props} /> }}
+                screenOptions={{
+                    header: () => <ShoesHeader />,
+                }}
             >
                 <Stack.Screen name="Home" component={Home} />
-                <Stack.Screen
-                    name="User"
-                    component={Cart}
-                    options={{ title: 'Usuário' }}
-                />
+                <Stack.Screen name="Cart" component={Cart} />
             </Stack.Navigator>
         </NavigationContainer>
     );
