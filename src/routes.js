@@ -22,8 +22,8 @@ function Routes() {
                     header: () => <ShoesHeader />,
                 }} */
             >
-                <Stack.Screen name="sign in caralho" component={SignIn} />
-                <Stack.Screen name="sign up" component={SignUp} />
+                <Stack.Screen name="signIn" component={SignIn} />
+                <Stack.Screen name="signUp" component={SignUp} />
             </Stack.Navigator>
         </NavigationContainer>
     );
