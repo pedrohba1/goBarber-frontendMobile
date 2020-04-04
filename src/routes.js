@@ -20,7 +20,7 @@ function Routes() {
                     header: () => <ShoesHeader />,
                 }} */
             >
-                <Stack.Screen name="sign in" component={SignIn} />
+                <Stack.Screen name="sign in caralho" component={SignIn} />
                 <Stack.Screen name="sign up" component={SignUp} />
             </Stack.Navigator>
         </NavigationContainer>
