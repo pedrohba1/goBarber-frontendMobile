@@ -1,12 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, TextInput } from 'react-native';
 
-// import { Container } from './styles';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
-export default function Dashboard() {
+import Background from '~/components/Background';
+
+export default function Dashboard({ navigation }) {
+    navigation.setOptions({
+        tabBarLabel: 'Agendamentos',
+        tabBarIcon: ({ color }) => (
+            <Icon name="event" size={20} color={color} />
+        ),
+    });
+
     return (
-        <View>
+        <Background>
             <TextInput>testeee</TextInput>
-        </View>
+        </Background>
     );
 }
