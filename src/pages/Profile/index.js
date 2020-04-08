@@ -11,13 +11,19 @@ import {
     Title,
     SubmitButton,
     Separator,
+    LogoutButton,
 } from './styles';
 
+import { SignOut } from '~/store/modules/auth/actions';
 import { updateProfileRequest } from '~/store/modules/user/actions';
 
 export default function Profile({ navigation }) {
     const dispatch = useDispatch();
-    const profile = useSelector(state => state.user.profile);
+    const profile = useSelector(state =>
+        state.user.profile !== null
+            ? state.user.profile
+            : { name: '', email: '' }
+    );
 
     const [name, setName] = useState(profile.name);
     const [email, setEmail] = useState(profile.email);
@@ -45,6 +51,7 @@ export default function Profile({ navigation }) {
     }, [profile]);
 
     function handleSubmit() {
+        setLoading(true);
         dispatch(
             updateProfileRequest({
                 name,
@@ -54,6 +61,11 @@ export default function Profile({ navigation }) {
                 confirmPassword,
             })
         );
+        setLoading(false);
+    }
+
+    function handleLogout() {
+        dispatch(SignOut());
     }
 
     return (
@@ -131,6 +143,9 @@ export default function Profile({ navigation }) {
                     <SubmitButton loading={loading} onPress={handleSubmit}>
                         Atualizar perfil
                     </SubmitButton>
+                    <LogoutButton onPress={handleLogout}>
+                        Sair do GoBarber
+                    </LogoutButton>
                 </Form>
             </Container>
         </Background>
