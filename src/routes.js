@@ -37,10 +37,23 @@ function LoginTabs() {
 
 function NewStackScreens() {
     return (
-        <CreateNew.Navigator>
+        <CreateNew.Navigator
+            screenOptions={{
+                headerTransparent: true,
+                headerTintColor: ' #fff',
+                headerLeftContainerStyle: {
+                    marginLeft: 20,
+                },
+                headerTitleStyle: {
+                    fontWeight: 'bold',
+                    color: '#fff',
+                },
+            }}
+        >
             <CreateNew.Screen
                 name="SelectProvider"
                 component={SelectProvider}
+                options={{ title: 'Selecione o prestador' }}
             />
             <CreateNew.Screen
                 name="SelectDateTime"
@@ -55,6 +68,7 @@ function HomeTabs() {
     return (
         <Tab.Navigator
             screenOptions={({ route }) => ({
+                tabBarVisible: route.name !== 'Agendar',
                 tabBarIcon: ({ focused }) => {
                     let iconName;
 
