@@ -17,7 +17,7 @@ import {
 import { SignOut } from '~/store/modules/auth/actions';
 import { updateProfileRequest } from '~/store/modules/user/actions';
 
-export default function Profile({ navigation }) {
+export default function Profile() {
     const dispatch = useDispatch();
     const profile = useSelector(state =>
         state.user.profile !== null
@@ -36,13 +36,6 @@ export default function Profile({ navigation }) {
     const passwordRef = useRef();
     const oldPasswordRef = useRef();
     const confirmPasswordRef = useRef();
-
-    navigation.setOptions({
-        tabBarLabel: 'Meu perfil',
-        tabBarIcon: ({ color }) => (
-            <Icon name="person" size={20} color={color} />
-        ),
-    });
 
     useEffect(() => {
         setOldPassword('');

@@ -29,13 +29,6 @@ export default function Dashboard({ navigation }) {
         );
     }
 
-    navigation.setOptions({
-        tabBarLabel: 'Agendamentos',
-        tabBarIcon: ({ color }) => (
-            <Icon name="event" size={20} color={color} />
-        ),
-    });
-
     return (
         <Background>
             <Container>

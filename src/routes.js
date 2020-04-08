@@ -1,5 +1,6 @@
 // In App.js in a new project
 import 'react-native-gesture-handler';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import * as React from 'react';
 import { useSelector } from 'react-redux';
@@ -12,8 +13,14 @@ import SignUp from '~/pages/SignUp';
 import Dashboard from '~/pages/Dashboard';
 import Profile from '~/pages/Profile';
 
+import SelectProvider from '~/pages/New/SelectProvider';
+import SelectDateTime from '~/pages/New/SelectDateTime';
+import Confirm from '~/pages/New/Confirm';
+
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
+const RootStack = createStackNavigator();
+const CreateNew = createStackNavigator();
 
 function LoginTabs() {
     return (
@@ -28,9 +35,55 @@ function LoginTabs() {
     );
 }
 
+function NewStackScreens() {
+    return (
+        <CreateNew.Navigator>
+            <CreateNew.Screen
+                name="SelectProvider"
+                component={SelectProvider}
+            />
+            <CreateNew.Screen
+                name="SelectDateTime"
+                component={SelectDateTime}
+            />
+            <CreateNew.Screen name="Confirm" component={Confirm} />
+        </CreateNew.Navigator>
+    );
+}
+
 function HomeTabs() {
     return (
         <Tab.Navigator
+            screenOptions={({ route }) => ({
+                tabBarIcon: ({ focused }) => {
+                    let iconName;
+
+                    switch (route.name) {
+                        case 'Agendar': {
+                            iconName = 'add-circle-outline';
+                            break;
+                        }
+                        case 'Profile': {
+                            iconName = 'person';
+                            break;
+                        }
+                        case 'Dashboard': {
+                            iconName = 'event';
+                            break;
+                        }
+
+                        default:
+                    }
+
+                    return (
+                        <Icon
+                            name={iconName}
+                            size={20}
+                            color={focused ? '#fff' : 'rgba(255,255,255,0.6)'}
+                        />
+                    );
+                },
+            })}
             tabBarOptions={{
                 keyboardHidesTabBar: true,
                 activeTintColor: '#fff',
@@ -42,11 +95,10 @@ function HomeTabs() {
         >
             <Tab.Screen name="Dashboard" component={Dashboard} />
             <Tab.Screen name="Profile" component={Profile} />
+            <Tab.Screen name="Agendar" component={NewStackScreens} />
         </Tab.Navigator>
     );
 }
-
-const RootStack = createStackNavigator();
 
 function Routes() {
     const signed = useSelector(state => state.auth.signed);
