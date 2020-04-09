@@ -2,6 +2,7 @@ import React, { useLayoutEffect, useMemo } from 'react';
 import { formatRelative, parseISO } from 'date-fns';
 import pt from 'date-fns/locale/pt';
 import { TouchableOpacity } from 'react-native';
+import { CommonActions } from '@react-navigation/native';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Background from '~/components/Background';
@@ -37,6 +38,12 @@ export default function Confirm({ navigation, route }) {
             date: time,
         });
 
+        navigation.dispatch(
+            CommonActions.reset({
+                index: 0,
+                routes: [{ name: 'Agendar' }],
+            })
+        );
         navigation.navigate('Dashboard');
     }
 

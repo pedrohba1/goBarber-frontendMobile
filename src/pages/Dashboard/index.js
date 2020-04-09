@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react';
-
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import React, { useState } from 'react';
+import { useFocusEffect } from '@react-navigation/native';
 import { Container, Title, List } from './styles';
 import api from '~/services/api';
 
@@ -10,7 +9,7 @@ import Appointment from '~/components/Appointment';
 export default function Dashboard({ navigation }) {
     const [appointments, setAppointments] = useState([]);
 
-    useEffect(() => {
+    useFocusEffect(() => {
         async function loadAppointments() {
             const response = await api.get('appointments');
             setAppointments(response.data);
