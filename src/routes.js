@@ -58,6 +58,7 @@ function NewStackScreens() {
             <CreateNew.Screen
                 name="SelectDateTime"
                 component={SelectDateTime}
+                options={{ title: 'Selecione o horário' }}
             />
             <CreateNew.Screen name="Confirm" component={Confirm} />
         </CreateNew.Navigator>
