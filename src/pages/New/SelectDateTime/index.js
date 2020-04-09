@@ -36,7 +36,7 @@ export default function SelectDateTime({ navigation, route }) {
             headerLeft: () => (
                 <TouchableOpacity
                     onPress={() => {
-                        navigation.navigate('SelectProvider');
+                        navigation.goBack();
                     }}
                 >
                     <Icon name="chevron-left" size={20} color="#fff" />

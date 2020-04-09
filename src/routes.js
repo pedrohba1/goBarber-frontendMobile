@@ -60,7 +60,11 @@ function NewStackScreens() {
                 component={SelectDateTime}
                 options={{ title: 'Selecione o horário' }}
             />
-            <CreateNew.Screen name="Confirm" component={Confirm} />
+            <CreateNew.Screen
+                name="Confirm"
+                component={Confirm}
+                options={{ title: 'Confirmar o agendamento' }}
+            />
         </CreateNew.Navigator>
     );
 }
@@ -109,8 +113,8 @@ function HomeTabs() {
             }}
         >
             <Tab.Screen name="Dashboard" component={Dashboard} />
-            <Tab.Screen name="Profile" component={Profile} />
             <Tab.Screen name="Agendar" component={NewStackScreens} />
+            <Tab.Screen name="Profile" component={Profile} />
         </Tab.Navigator>
     );
 }
